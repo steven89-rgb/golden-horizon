@@ -151,6 +151,13 @@ export const Clock = (p) => (
     <path d="M12 7v5l3 2" />
   </Ico>
 );
+export const Cart = (p) => (
+  <Ico {...p}>
+    <circle cx="9" cy="20" r="1.4" />
+    <circle cx="18" cy="20" r="1.4" />
+    <path d="M2.5 3h2.2l2.1 11.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.3L21.5 7H6" />
+  </Ico>
+);
 
 // WhatsApp-style chat glyph (recreated, filled).
 export const WhatsApp = ({ size = 24, ...rest }) => (
@@ -182,5 +189,6 @@ export const Icons = {
   Mail,
   Repeat,
   Clock,
+  Cart,
   WhatsApp,
 };

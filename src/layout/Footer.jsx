@@ -13,11 +13,11 @@ const COLS = [
 export function Footer() {
   const navigate = useNavigate();
   return (
-    <footer style={{ background: 'var(--ink)', color: 'var(--text-inverse)', marginTop: 'var(--space-12)' }}>
+    <footer style={{ background: 'var(--ink)', color: 'var(--text-inverse)', marginTop: 'var(--space-12)', borderTop: '1px solid var(--border-subtle)' }}>
       <div style={{ maxWidth: 'var(--container-wide)', margin: '0 auto', padding: 'var(--space-10) var(--space-6) var(--space-6)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr', gap: 'var(--space-7)', paddingBottom: 'var(--space-8)', borderBottom: '1px solid var(--border-inverse)' }}>
           <div>
-            <Logo dark />
+            <Logo />
             <p style={{ marginTop: 18, maxWidth: 320, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-relaxed)', color: 'var(--gray-400)' }}>
               Premium research materials supplied with third-party Certificates of Analysis and transparent batch documentation. California fulfillment.
             </p>

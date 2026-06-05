@@ -28,10 +28,10 @@ export const WHY = [
 ];
 
 export const TRUST = [
-  { icon: 'BadgeChk', label: 'Third-Party Verified' },
-  { icon: 'Layers', label: 'Batch Verified' },
-  { icon: 'MapPin', label: 'California Fulfillment' },
-  { icon: 'Box', label: 'Secure Packaging' },
+  { icon: 'BadgeChk', label: 'Third-Party Verified', sub: 'Independent Certificate of Analysis' },
+  { icon: 'Layers', label: 'Batch Verified', sub: 'Every batch ships with a COA' },
+  { icon: 'MapPin', label: 'California Fulfillment', sub: 'Fast, discreet shipping' },
+  { icon: 'Box', label: 'Secure Packaging', sub: 'Tamper-evident & discreet' },
 ];
 
 export const STEPS = [

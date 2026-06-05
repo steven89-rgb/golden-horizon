@@ -30,7 +30,7 @@ export default function Contact() {
             return (
               <Card key={r.h} variant="default" padding="var(--space-5)">
                 <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 46, height: 46, borderRadius: 'var(--radius-md)', background: 'var(--accent-soft)', color: 'var(--gold-700)', flexShrink: 0 }}><Icon size={22} stroke={1.8} /></span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 46, height: 46, borderRadius: 'var(--radius-md)', background: 'var(--accent-soft)', color: 'var(--gold-300)', flexShrink: 0 }}><Icon size={22} stroke={1.8} /></span>
                   <div>
                     <h3 style={{ margin: '2px 0 6px', fontSize: 'var(--text-md)', fontWeight: 700, color: 'var(--text-primary)' }}>{r.h}</h3>
                     <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-normal)', color: 'var(--text-secondary)' }}>{r.p}</p>

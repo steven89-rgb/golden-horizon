@@ -35,34 +35,42 @@
   --red-500:   #A6402F; /* not found / error */
   --red-100:   #F3E3DF;
 
+  /* ===========================================================
+     DARK THEME (default + only theme)
+     Matte-black premium canvas, warm whites, gold accent.
+     Semantic aliases are the single source of truth — flipping
+     these recolors every component without touching its code.
+     =========================================================== */
+
   /* ---- Semantic: text ---- */
-  --text-primary:   var(--ink);
-  --text-secondary: var(--gray-600);
-  --text-tertiary:  var(--gray-500);
-  --text-disabled:  var(--gray-400);
-  --text-inverse:   var(--gray-0);
-  --text-accent:    var(--gold-600);
+  --text-primary:   #F6F5F2; /* warm white */
+  --text-secondary: #ACA9A2;
+  --text-tertiary:  #7E7B75;
+  --text-disabled:  #56544F;
+  --text-inverse:   #F6F5F2; /* dark islands still read light */
+  --text-on-accent: var(--ink); /* text on gold fills */
+  --text-accent:    var(--gold-400);
 
   /* ---- Semantic: surfaces ---- */
-  --surface-page:    var(--gray-25);
-  --surface-card:    var(--gray-0);
-  --surface-subtle:  var(--gray-50);
-  --surface-sunken:  var(--gray-100);
-  --surface-inverse: var(--ink);
-  --surface-inverse-soft: var(--gray-800);
+  --surface-page:    #0A0A0A; /* near matte black */
+  --surface-card:    #141311; /* lifted panel */
+  --surface-subtle:  #181714;
+  --surface-sunken:  #100F0D;
+  --surface-inverse: var(--gray-25);
+  --surface-inverse-soft: #201E1B;
 
-  /* ---- Semantic: borders ---- */
-  --border-subtle:  var(--gray-150);
-  --border-default: var(--gray-200);
-  --border-strong:  var(--gray-300);
+  /* ---- Semantic: borders (hairline, translucent warm-white) ---- */
+  --border-subtle:  rgba(246,240,228,0.07);
+  --border-default: rgba(246,240,228,0.11);
+  --border-strong:  rgba(246,240,228,0.20);
   --border-inverse: rgba(255,255,255,0.14);
 
   /* ---- Semantic: accent ---- */
   --accent:        var(--gold-400);
-  --accent-hover:  var(--gold-500);
-  --accent-press:  var(--gold-600);
-  --accent-soft:   var(--gold-100);
-  --accent-border: var(--gold-300);
+  --accent-hover:  var(--gold-300);
+  --accent-press:  var(--gold-500);
+  --accent-soft:   rgba(201,167,106,0.14);
+  --accent-border: rgba(201,167,106,0.36);
 
   /* ---- Focus ---- */
   --focus-ring: 0 0 0 3px rgba(201,167,106,0.40);

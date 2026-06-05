@@ -3,50 +3,174 @@ import { useNavigate } from 'react-router-dom';
 import { Section, SectionHead } from '../layout/Section.jsx';
 import { FaqItem } from '../layout/FaqItem.jsx';
 import { Button, Card, Eyebrow, Input } from '../components/index.js';
-import { Icons, ArrowR, ShieldChk, Search } from '../lib/icons.jsx';
+import { Icons, ArrowR, ShieldChk, Search, FileChk } from '../lib/icons.jsx';
 import { TRUST, WHY, STEPS, FAQ } from '../lib/data.js';
+
+/* ----------------------------- Hero ----------------------------- */
+
+function ProductMock() {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        borderRadius: 'var(--radius-2xl)',
+        background: 'var(--gradient-ink)',
+        border: '1px solid var(--border-default)',
+        minHeight: 460,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {/* warm gold glow */}
+      <div style={{ position: 'absolute', right: '-10%', bottom: '-20%', width: 520, height: 520, background: 'radial-gradient(50% 50% at 50% 50%, rgba(201,167,106,0.22), transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 90% at 80% 10%, rgba(201,167,106,0.08), transparent 55%)', pointerEvents: 'none' }} />
+
+      {/* Research-use badge */}
+      <div style={{ position: 'absolute', top: 20, right: 20, textAlign: 'center', padding: '8px 14px', borderRadius: 'var(--radius-sm)', background: 'var(--gradient-gold)', color: 'var(--ink)' }}>
+        <div style={{ fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 800, letterSpacing: '0.08em' }}>RESEARCH USE ONLY</div>
+        <div style={{ fontFamily: 'var(--font-sans)', fontSize: 8, fontWeight: 600, letterSpacing: '0.06em', opacity: 0.8, marginTop: 2 }}>NOT FOR HUMAN CONSUMPTION</div>
+      </div>
+
+      {/* Centered brand lockup (stand-in for product photography) */}
+      <div style={{ position: 'relative', textAlign: 'center', padding: 'var(--space-8)' }}>
+        <img src="/assets/logo-mark.png" alt="" style={{ width: 110, margin: '0 auto 18px', filter: 'drop-shadow(0 8px 28px rgba(201,167,106,0.35))' }} />
+        <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 22, letterSpacing: '0.08em', color: 'var(--text-primary)' }}>GOLDEN HORIZON</div>
+        <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 11, letterSpacing: '0.42em', color: 'var(--text-accent)', marginTop: 6, marginRight: '-0.42em' }}>RESEARCH</div>
+        <div style={{ display: 'inline-flex', gap: 10, marginTop: 22, fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-tertiary)' }}>
+          <span style={{ padding: '4px 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)' }}>RTA-20</span>
+          <span style={{ padding: '4px 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)' }}>Research Pen</span>
+          <span style={{ padding: '4px 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)' }}>20 mg</span>
+        </div>
+        <div style={{ marginTop: 16, fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--text-disabled)' }}>Product imagery placeholder</div>
+      </div>
+    </div>
+  );
+}
 
 function Hero() {
   const navigate = useNavigate();
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)', width: 900, height: 360, background: 'radial-gradient(60% 100% at 50% 0%, rgba(201,167,106,0.18), transparent 70%)', pointerEvents: 'none' }} />
-      <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: 'var(--space-12) var(--space-6) var(--space-10)', position: 'relative', textAlign: 'center' }}>
-        <img src="/assets/logo-mark.png" alt="" style={{ width: 96, marginBottom: 26, marginLeft: 'auto', marginRight: 'auto' }} />
-        <Eyebrow rule align="center" style={{ marginBottom: 26, justifyContent: 'center' }}>Golden Horizon Research</Eyebrow>
-        <h1 style={{ margin: '0 auto', maxWidth: 760, fontSize: 'var(--text-4xl)', fontWeight: 800, letterSpacing: 'var(--tracking-tighter)', lineHeight: 'var(--leading-tight)', color: 'var(--text-primary)' }}>
-          Premium Research Materials
-        </h1>
-        <p style={{ margin: '24px auto 0', maxWidth: 560, fontSize: 'var(--text-md)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-secondary)' }}>
-          Independently verified. Transparent documentation. Consistent standards.
-        </p>
-        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 34, flexWrap: 'wrap' }}>
-          <Button variant="primary" size="lg" iconRight={<ArrowR size={17} />} onClick={() => navigate('/shop')}>View Products</Button>
-          <Button variant="secondary" size="lg" iconLeft={<ShieldChk size={17} stroke={1.9} />} onClick={() => navigate('/verify')}>Verify COAs</Button>
+      {/* ambient gold horizon glow */}
+      <div style={{ position: 'absolute', top: -160, left: '55%', width: 1100, height: 520, background: 'radial-gradient(50% 100% at 50% 0%, rgba(201,167,106,0.16), transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ maxWidth: 'var(--container-wide)', margin: '0 auto', padding: 'var(--space-10) var(--space-6) var(--space-9)', position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 'var(--space-9)', alignItems: 'center' }}>
+          <div>
+            <Eyebrow rule style={{ marginBottom: 22 }}>Golden Horizon Research</Eyebrow>
+            <h1 style={{ margin: 0, maxWidth: 540, fontSize: 'clamp(2.75rem, 5.4vw, 5rem)', fontWeight: 800, letterSpacing: 'var(--tracking-tighter)', lineHeight: 1.0, color: 'var(--text-primary)' }}>
+              Premium Research <span style={{ color: 'var(--text-accent)' }}>Materials</span>
+            </h1>
+            <div style={{ width: 72, height: 4, borderRadius: 'var(--radius-full)', background: 'var(--gradient-gold)', margin: '28px 0 0' }} />
+            <p style={{ margin: '24px 0 0', maxWidth: 460, fontSize: 'var(--text-md)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-secondary)' }}>
+              Independently verified. Batch traceable.
+              <br />
+              Transparent documentation. Consistent standards.
+            </p>
+            <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' }}>
+              <Button variant="primary" size="lg" iconRight={<ArrowR size={17} />} onClick={() => navigate('/shop')}>View Products</Button>
+              <Button variant="secondary" size="lg" iconLeft={<ShieldChk size={17} stroke={1.9} />} onClick={() => navigate('/verify')}>Verify COAs</Button>
+            </div>
+          </div>
+          <ProductMock />
         </div>
+
+        <TrustBar />
+        <BatchBand />
       </div>
-      <TrustBar />
     </div>
   );
 }
 
 function TrustBar() {
   return (
-    <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: '0 var(--space-6)' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 1, background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
-        {TRUST.map((t) => {
-          const Icon = Icons[t.icon];
-          return (
-            <div key={t.label} style={{ background: 'var(--surface-card)', padding: '22px 20px', display: 'flex', alignItems: 'center', gap: 13 }}>
-              <span style={{ color: 'var(--text-accent)', flexShrink: 0 }}><Icon size={24} stroke={1.8} /></span>
-              <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-primary)' }}>{t.label}</span>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', marginTop: 'var(--space-9)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
+      {TRUST.map((t, i) => {
+        const Icon = Icons[t.icon];
+        return (
+          <div key={t.label} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '26px 24px', borderLeft: i === 0 ? 'none' : '1px solid var(--border-subtle)' }}>
+            <span style={{ color: 'var(--text-accent)', flexShrink: 0 }}><Icon size={26} stroke={1.7} /></span>
+            <div>
+              <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-2xs)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.10em', color: 'var(--text-primary)' }}>{t.label}</div>
+              <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-tertiary)', marginTop: 4 }}>{t.sub}</div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
+
+function CoaThumbs() {
+  const paper = (rot, z, x) => (
+    <div
+      style={{
+        position: 'absolute',
+        left: x,
+        top: 0,
+        width: 74,
+        height: 96,
+        background: '#F4F2EC',
+        borderRadius: 6,
+        boxShadow: '0 8px 20px rgba(0,0,0,0.45)',
+        transform: `rotate(${rot}deg)`,
+        zIndex: z,
+        padding: 9,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4,
+      }}
+    >
+      <div style={{ width: '55%', height: 5, borderRadius: 2, background: 'var(--gold-400)' }} />
+      {[...Array(6)].map((_, i) => (
+        <div key={i} style={{ width: i % 3 === 2 ? '60%' : '100%', height: 3, borderRadius: 2, background: '#CFCABD' }} />
+      ))}
+    </div>
+  );
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 14 }}>
+      <div style={{ position: 'relative', width: 130, height: 100 }}>
+        {paper(-8, 1, 6)}
+        {paper(7, 2, 50)}
+      </div>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-sans)', fontSize: 'var(--text-2xs)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.10em', color: 'var(--text-accent)' }}>
+        <FileChk size={15} stroke={1.9} /> View Sample COA
+      </span>
+    </div>
+  );
+}
+
+function BatchBand() {
+  const navigate = useNavigate();
+  const [val, setVal] = useState('');
+  const go = () => navigate(val.trim() ? `/verify?q=${encodeURIComponent(val.trim())}` : '/verify');
+  return (
+    <Card variant="elevated" accent padding="var(--space-7)" style={{ marginTop: 'var(--space-8)', background: 'var(--surface-card)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr auto', gap: 'var(--space-7)', alignItems: 'center' }}>
+        <div>
+          <Eyebrow rule style={{ marginBottom: 14 }}>Verify With Confidence</Eyebrow>
+          <h2 style={{ margin: 0, fontSize: 'var(--text-xl)', fontWeight: 800, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>Check Your Batch</h2>
+          <p style={{ margin: '10px 0 0', maxWidth: 320, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-secondary)' }}>
+            Enter your batch or lot number to view its official Certificate of Analysis.
+          </p>
+        </div>
+        <Input
+          mono
+          placeholder="Enter batch or lot number"
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && go()}
+          iconLeft={<Search size={18} />}
+          trailing={<Button size="sm" iconRight={<ArrowR size={15} />} onClick={go}>Verify Now</Button>}
+        />
+        <CoaThumbs />
+      </div>
+    </Card>
+  );
+}
+
+/* --------------------------- Sections --------------------------- */
 
 function WhySection() {
   return (
@@ -57,7 +181,7 @@ function WhySection() {
           const Icon = Icons[w.icon];
           return (
             <Card key={w.h} variant="default" padding="var(--space-5)">
-              <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--accent-soft)', color: 'var(--gold-700)' }}><Icon size={24} stroke={1.8} /></span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--accent-soft)', color: 'var(--gold-300)', border: '1px solid var(--accent-border)' }}><Icon size={24} stroke={1.8} /></span>
               <h3 style={{ margin: '18px 0 8px', fontSize: 'var(--text-md)', fontWeight: 700, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{w.h}</h3>
               <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-normal)', color: 'var(--text-secondary)' }}>{w.p}</p>
             </Card>
@@ -70,7 +194,7 @@ function WhySection() {
 
 function ProcessSection() {
   return (
-    <Section dark>
+    <Section style={{ background: 'var(--surface-sunken)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
       <SectionHead dark eyebrow="How It Works" title="From source to fulfillment." desc="A consistent, four-stage path that ends in a verifiable Certificate of Analysis." />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 0 }}>
         {STEPS.map((s, i) => {
@@ -82,54 +206,12 @@ function ProcessSection() {
                 {i < 3 && <span style={{ flex: 1, height: 1, background: 'var(--border-inverse)' }} />}
               </div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--text-accent)', marginTop: 22 }}>{s.n}</div>
-              <h3 style={{ margin: '6px 0 8px', fontSize: 'var(--text-lg)', fontWeight: 700, color: 'var(--text-inverse)' }}>{s.h}</h3>
-              <p style={{ margin: 0, maxWidth: 220, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-normal)', color: 'var(--gray-400)' }}>{s.p}</p>
+              <h3 style={{ margin: '6px 0 8px', fontSize: 'var(--text-lg)', fontWeight: 700, color: 'var(--text-primary)' }}>{s.h}</h3>
+              <p style={{ margin: 0, maxWidth: 220, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-normal)', color: 'var(--text-secondary)' }}>{s.p}</p>
             </div>
           );
         })}
       </div>
-    </Section>
-  );
-}
-
-function VerifyTeaser() {
-  const navigate = useNavigate();
-  const [val, setVal] = useState('GHR-2406-A');
-  return (
-    <Section>
-      <Card variant="elevated" accent padding="0" style={{ overflow: 'hidden' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr' }}>
-          <div style={{ padding: 'var(--space-9)' }}>
-            <Eyebrow rule style={{ marginBottom: 18 }}>Certificate Verification</Eyebrow>
-            <h2 style={{ margin: 0, fontSize: 'var(--text-2xl)', fontWeight: 800, letterSpacing: 'var(--tracking-tight)', lineHeight: 'var(--leading-snug)', color: 'var(--text-primary)' }}>Verify any batch in seconds.</h2>
-            <p style={{ margin: '14px 0 26px', maxWidth: 420, fontSize: 'var(--text-base)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-secondary)' }}>
-              Search a batch or lot number to retrieve its Certificate of Analysis, analysis date, and purity results.
-            </p>
-            <Input
-              label="Batch or Lot Number"
-              mono
-              value={val}
-              onChange={(e) => setVal(e.target.value)}
-              iconLeft={<Search size={18} />}
-              trailing={<Button size="sm" onClick={() => navigate(`/verify?q=${encodeURIComponent(val)}`)}>Verify</Button>}
-            />
-          </div>
-          <div style={{ background: 'var(--surface-subtle)', borderLeft: '1px solid var(--border-subtle)', padding: 'var(--space-7)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14 }}>
-            {[['Document', 'COA PDF', 'FileChk'], ['Analysis Date', '2026-05-18', 'Clock'], ['Purity Result', '99.2%', 'BadgeChk']].map(([k, v, ic]) => {
-              const Icon = Icons[ic];
-              return (
-                <div key={k} style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '16px 18px' }}>
-                  <span style={{ color: 'var(--text-accent)' }}><Icon size={22} stroke={1.8} /></span>
-                  <div>
-                    <div style={{ fontSize: 'var(--text-2xs)', textTransform: 'uppercase', letterSpacing: 'var(--tracking-caps)', fontWeight: 600, color: 'var(--text-tertiary)', whiteSpace: 'nowrap' }}>{k}</div>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-base)', fontWeight: 500, color: 'var(--text-primary)', marginTop: 3 }}>{v}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </Card>
     </Section>
   );
 }
@@ -154,7 +236,6 @@ export default function Home() {
       <Hero />
       <WhySection />
       <ProcessSection />
-      <VerifyTeaser />
       <FaqSection />
     </div>
   );

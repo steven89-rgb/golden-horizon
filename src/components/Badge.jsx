@@ -10,7 +10,7 @@ export function Badge({ children, tone = 'neutral', dot = false, size = 'md', st
     pending: { bg: 'var(--amber-100)', fg: 'var(--amber-500)', bd: '#ecdcb8' },
     error: { bg: 'var(--red-100)', fg: 'var(--red-500)', bd: '#e6cdc6' },
     neutral: { bg: 'var(--surface-sunken)', fg: 'var(--text-secondary)', bd: 'var(--border-default)' },
-    gold: { bg: 'var(--accent-soft)', fg: 'var(--gold-700)', bd: 'var(--accent-border)' },
+    gold: { bg: 'var(--accent-soft)', fg: 'var(--gold-300)', bd: 'var(--accent-border)' },
   };
   const sizes = {
     sm: { padding: '3px 9px', fontSize: '11px', gap: 6, dotS: 6 },

@@ -29,7 +29,7 @@ export default function About() {
             const Icon = Icons[v.icon];
             return (
               <Card key={v.h} variant="default" accent padding="var(--space-6)">
-                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--accent-soft)', color: 'var(--gold-700)' }}><Icon size={24} stroke={1.8} /></span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 48, height: 48, borderRadius: 'var(--radius-md)', background: 'var(--accent-soft)', color: 'var(--gold-300)' }}><Icon size={24} stroke={1.8} /></span>
                 <h3 style={{ margin: '18px 0 8px', fontSize: 'var(--text-lg)', fontWeight: 700, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{v.h}</h3>
                 <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-normal)', color: 'var(--text-secondary)' }}>{v.p}</p>
               </Card>

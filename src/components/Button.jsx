@@ -28,7 +28,7 @@ export function Button({
     primary: { background: 'var(--accent)', color: 'var(--ink)', border: '1px solid transparent', boxShadow: 'var(--shadow-sm)' },
     secondary: { background: 'var(--surface-card)', color: 'var(--text-primary)', border: '1px solid var(--border-strong)', boxShadow: 'var(--shadow-xs)' },
     ghost: { background: 'transparent', color: 'var(--text-primary)', border: '1px solid transparent', boxShadow: 'none' },
-    dark: { background: 'var(--ink)', color: 'var(--text-inverse)', border: '1px solid transparent', boxShadow: 'var(--shadow-sm)' },
+    dark: { background: 'var(--surface-subtle)', color: 'var(--text-primary)', border: '1px solid var(--border-strong)', boxShadow: 'none' },
   };
 
   const s = sizes[size] || sizes.md;
@@ -41,7 +41,7 @@ export function Button({
     primary: { background: 'var(--accent-hover)' },
     secondary: { background: 'var(--surface-subtle)', borderColor: 'var(--gray-400)' },
     ghost: { background: 'var(--surface-sunken)' },
-    dark: { background: 'var(--gray-800)' },
+    dark: { background: 'var(--surface-inverse-soft)', borderColor: 'rgba(246,240,228,0.30)' },
   }[variant] : {};
 
   return (

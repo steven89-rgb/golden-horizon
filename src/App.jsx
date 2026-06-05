@@ -9,6 +9,7 @@ import Product from './pages/Product.jsx';
 import Verify from './pages/Verify.jsx';
 import Contact from './pages/Contact.jsx';
 import About from './pages/About.jsx';
+import Faq from './pages/Faq.jsx';
 import Account from './pages/Account.jsx';
 
 /** Scroll to top on every route change. */
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/account" element={<Account />} />
           <Route path="*" element={<Home />} />
