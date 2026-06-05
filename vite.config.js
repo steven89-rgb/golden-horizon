@@ -11,4 +11,16 @@ export default defineConfig({
   build: {
     outDir: 'build',
   },
+  // Accept the proxied preview hostname (Claude Code on the web serves the
+  // dev/preview server through a generated host that Vite would otherwise block).
+  server: {
+    host: true,
+    port: 5173,
+    allowedHosts: true,
+  },
+  preview: {
+    host: true,
+    port: 5173,
+    allowedHosts: true,
+  },
 });
