@@ -1,0 +1,12 @@
+# Render blueprint — Golden Horizon Research static site.
+# Vite builds to build/; the rewrite serves index.html for client-side routes.
+services:
+  - type: web
+    name: golden-horizon
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -28,7 +28,7 @@ rebuilt as a real React + Vite single-page application.
 ```bash
 npm install
 npm run dev      # start the dev server (http://localhost:5173)
-npm run build    # production build to dist/
+npm run build    # production build to build/
 npm run preview  # preview the production build
 ```
 
