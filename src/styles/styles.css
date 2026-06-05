@@ -1,0 +1,7 @@
+/* Golden Horizon Research — Design System entry point.
+   Keep this to @import lines only; everything it reaches ships to the app. */
+@import url("./tokens/fonts.css");
+@import url("./tokens/colors.css");
+@import url("./tokens/typography.css");
+@import url("./tokens/layout.css");
+@import url("./base.css");

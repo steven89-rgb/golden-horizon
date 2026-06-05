@@ -1,0 +1,73 @@
+/* Golden Horizon Research — Color Tokens
+   Brand: Matte Black #0D0D0D · White #FFFFFF · Soft Gold #C9A76A · Light Gray #F7F7F7
+   A warm, restrained palette — gold is an accent, never a flood. */
+:root {
+  /* ---- Base: Gold scale (anchored on brand #C9A76A) ---- */
+  --gold-100: #F6EFE1;
+  --gold-200: #EBDCBE;
+  --gold-300: #DCC596;
+  --gold-400: #C9A76A; /* brand gold */
+  --gold-500: #B89058; /* hover / pressed */
+  --gold-600: #9C7843;
+  --gold-700: #785A31;
+
+  /* ---- Base: Warm neutral scale ---- */
+  --gray-0:   #FFFFFF;
+  --gray-25:  #FCFBF9; /* warm paper */
+  --gray-50:  #F7F7F5;
+  --gray-100: #F2F1EE;
+  --gray-150: #E9E8E4;
+  --gray-200: #DEDCD7;
+  --gray-300: #C9C7C1;
+  --gray-400: #A8A6A0;
+  --gray-500: #82807A;
+  --gray-600: #5F5D58;
+  --gray-700: #403E3A;
+  --gray-800: #262523;
+  --gray-900: #161514;
+  --ink:      #0D0D0D; /* matte black */
+
+  /* ---- Status (muted, premium — for verification states) ---- */
+  --green-500: #3B7A57; /* verified / passed */
+  --green-100: #E6F0EA;
+  --amber-500: #B7791F; /* pending */
+  --amber-100: #F6ECD8;
+  --red-500:   #A6402F; /* not found / error */
+  --red-100:   #F3E3DF;
+
+  /* ---- Semantic: text ---- */
+  --text-primary:   var(--ink);
+  --text-secondary: var(--gray-600);
+  --text-tertiary:  var(--gray-500);
+  --text-disabled:  var(--gray-400);
+  --text-inverse:   var(--gray-0);
+  --text-accent:    var(--gold-600);
+
+  /* ---- Semantic: surfaces ---- */
+  --surface-page:    var(--gray-25);
+  --surface-card:    var(--gray-0);
+  --surface-subtle:  var(--gray-50);
+  --surface-sunken:  var(--gray-100);
+  --surface-inverse: var(--ink);
+  --surface-inverse-soft: var(--gray-800);
+
+  /* ---- Semantic: borders ---- */
+  --border-subtle:  var(--gray-150);
+  --border-default: var(--gray-200);
+  --border-strong:  var(--gray-300);
+  --border-inverse: rgba(255,255,255,0.14);
+
+  /* ---- Semantic: accent ---- */
+  --accent:        var(--gold-400);
+  --accent-hover:  var(--gold-500);
+  --accent-press:  var(--gold-600);
+  --accent-soft:   var(--gold-100);
+  --accent-border: var(--gold-300);
+
+  /* ---- Focus ---- */
+  --focus-ring: 0 0 0 3px rgba(201,167,106,0.40);
+
+  /* ---- Gold gradient (sun / premium accents — used sparingly) ---- */
+  --gradient-gold: linear-gradient(135deg, #E2C98C 0%, #C9A76A 48%, #A8854C 100%); /* @kind other */
+  --gradient-ink:  linear-gradient(180deg, #1A1917 0%, #0D0D0D 100%); /* @kind other */
+}

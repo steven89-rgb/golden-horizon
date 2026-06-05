@@ -1,0 +1,6 @@
+/* Golden Horizon Research — Webfonts
+   Sans: Hanken Grotesk — clean modern geometric grotesque (UI, headings, body)
+   Mono: Geist Mono — technical accent for batch/lot codes, purity data
+   NOTE: These are Google Fonts substitutes for the brand's custom wordmark.
+   Flagged to client — supply licensed brand fonts to replace if available. */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap');
