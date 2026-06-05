@@ -10,41 +10,14 @@ import { TRUST, WHY, STEPS, FAQ } from '../lib/data.js';
 
 function ProductMock() {
   return (
-    <div
-      style={{
-        position: 'relative',
-        borderRadius: 'var(--radius-2xl)',
-        background: 'var(--gradient-ink)',
-        border: '1px solid var(--border-default)',
-        minHeight: 460,
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      {/* warm gold glow */}
-      <div style={{ position: 'absolute', right: '-10%', bottom: '-20%', width: 520, height: 520, background: 'radial-gradient(50% 50% at 50% 50%, rgba(201,167,106,0.22), transparent 70%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 90% at 80% 10%, rgba(201,167,106,0.08), transparent 55%)', pointerEvents: 'none' }} />
-
-      {/* Research-use badge */}
-      <div style={{ position: 'absolute', top: 20, right: 20, textAlign: 'center', padding: '8px 14px', borderRadius: 'var(--radius-sm)', background: 'var(--gradient-gold)', color: 'var(--ink)' }}>
-        <div style={{ fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 800, letterSpacing: '0.08em' }}>RESEARCH USE ONLY</div>
-        <div style={{ fontFamily: 'var(--font-sans)', fontSize: 8, fontWeight: 600, letterSpacing: '0.06em', opacity: 0.8, marginTop: 2 }}>NOT FOR HUMAN CONSUMPTION</div>
-      </div>
-
-      {/* Centered brand lockup (stand-in for product photography) */}
-      <div style={{ position: 'relative', textAlign: 'center', padding: 'var(--space-8)' }}>
-        <img src="/assets/logo-mark.png" alt="" style={{ width: 110, margin: '0 auto 18px', filter: 'drop-shadow(0 8px 28px rgba(201,167,106,0.35))' }} />
-        <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 22, letterSpacing: '0.08em', color: 'var(--text-primary)' }}>GOLDEN HORIZON</div>
-        <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 11, letterSpacing: '0.42em', color: 'var(--text-accent)', marginTop: 6, marginRight: '-0.42em' }}>RESEARCH</div>
-        <div style={{ display: 'inline-flex', gap: 10, marginTop: 22, fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-tertiary)' }}>
-          <span style={{ padding: '4px 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)' }}>RTA-20</span>
-          <span style={{ padding: '4px 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)' }}>Research Pen</span>
-          <span style={{ padding: '4px 10px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-full)' }}>20 mg</span>
-        </div>
-        <div style={{ marginTop: 16, fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--text-disabled)' }}>Product imagery placeholder</div>
-      </div>
+    <div style={{ position: 'relative', minHeight: 460, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      {/* warm gold glow behind the product */}
+      <div style={{ position: 'absolute', inset: '-8% -12%', background: 'radial-gradient(55% 55% at 62% 52%, rgba(201,167,106,0.20), transparent 70%)', pointerEvents: 'none' }} />
+      <img
+        src="/assets/hero-product.webp"
+        alt="Golden Horizon Research RTA-20 research pen with its packaging, marked Research Use Only"
+        style={{ position: 'relative', width: '100%', maxWidth: 660, height: 'auto', borderRadius: 'var(--radius-lg)' }}
+      />
     </div>
   );
 }
