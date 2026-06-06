@@ -19,7 +19,7 @@ export function ProductThumb({ form, big = false }) {
       }}
     >
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 80% at 50% 0%, rgba(201,167,106,0.10), transparent 60%)' }} />
-      <img src="/assets/logo-mark.png" alt="" style={{ width: big ? 150 : 92, opacity: 0.5, filter: 'grayscale(0.1)' }} />
+      <img src="/assets/logo-mark.png" alt="" loading="lazy" decoding="async" style={{ width: big ? 150 : 92, opacity: 0.5, filter: 'grayscale(0.1)' }} />
       <span style={{ position: 'absolute', bottom: 12, left: 14, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-tertiary)' }}>{form}</span>
     </div>
   );

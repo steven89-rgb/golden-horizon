@@ -1,0 +1,92 @@
+/* Golden Horizon Research — Responsive layer
+   The app styles components inline, which wins on specificity. These breakpoint
+   rules therefore use !important deliberately and only to RESTRUCTURE layout
+   (grids, stacking, padding) on tablet and mobile. Class hooks are added in JSX.
+   Breakpoints: tablet <= 900px, mobile <= 640px. */
+
+/* Never allow a decorative/absolute layer to cause horizontal scroll.
+   `clip` (not `hidden`) is used so it does NOT create a scroll container,
+   which would otherwise break the sticky header. */
+html, body { overflow-x: clip; max-width: 100%; }
+
+/* ===================== TABLET (<= 900px) ===================== */
+@media (max-width: 900px) {
+  /* Generic grid collapses */
+  .gh-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .gh-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .gh-process { grid-template-columns: repeat(2, 1fr) !important; row-gap: 40px !important; }
+
+  /* Hero: stack, text first, image after */
+  .gh-hero {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .gh-hero-media { order: 2; }
+
+  /* Batch verify band stacks */
+  .gh-batchband { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .gh-batchband-thumbs { display: none !important; }
+
+  /* Footer columns */
+  .gh-footer-cols { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+
+  /* Product detail: gallery above details, no sticky */
+  .gh-product-layout { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .gh-product-gallery { position: static !important; }
+
+  /* Verify result two-up becomes stacked */
+  .gh-verify-split { grid-template-columns: 1fr !important; }
+  .gh-verify-split > div { border-right: none !important; }
+}
+
+/* ===================== MOBILE (<= 640px) ===================== */
+@media (max-width: 640px) {
+  /* Everything to a single column */
+  .gh-grid-4,
+  .gh-grid-3,
+  .gh-grid-2,
+  .gh-process,
+  .gh-product-grid,
+  .gh-stats { grid-template-columns: 1fr !important; }
+
+  .gh-trustbar { grid-template-columns: 1fr 1fr !important; }
+  .gh-trustbar > div { border-left: none !important; }
+
+  .gh-footer-cols { grid-template-columns: 1fr !important; }
+
+  /* Tighter section rhythm on small screens */
+  .gh-section-pad { padding-top: var(--space-9) !important; padding-bottom: var(--space-9) !important; }
+  .gh-container-pad { padding-left: var(--space-5) !important; padding-right: var(--space-5) !important; }
+
+  /* Hero spacing */
+  .gh-hero-wrap { padding-top: var(--space-8) !important; padding-bottom: var(--space-8) !important; }
+
+  /* Stats: 2-up reads better than 1-up for short numbers */
+  .gh-stats { grid-template-columns: 1fr 1fr !important; }
+
+  /* Buttons go full-width and thumb-reachable */
+  .gh-cta-row { width: 100%; }
+  .gh-cta-row > button { flex: 1 1 auto; }
+
+  /* Product purchase row stacks */
+  .gh-buy-row { flex-direction: column !important; align-items: stretch !important; }
+  .gh-buy-row > button { width: 100% !important; }
+
+  /* Verify hero search stacks */
+  .gh-verify-search { flex-direction: column !important; }
+  .gh-verify-search > button { width: 100% !important; }
+
+  /* Account order rows: compact two-column with wrapping meta */
+  .gh-account-row { grid-template-columns: 1fr auto !important; row-gap: 8px !important; }
+}
+
+/* ===================== NAV (desktop vs. mobile) ===================== */
+/* Desktop links + mobile toggle visibility are swapped at 880px */
+@media (max-width: 880px) {
+  .gh-nav-links { display: none !important; }
+  .gh-nav-toggle { display: inline-flex !important; }
+}
+@media (min-width: 881px) {
+  .gh-nav-toggle { display: none !important; }
+  .gh-mobile-drawer { display: none !important; }
+}

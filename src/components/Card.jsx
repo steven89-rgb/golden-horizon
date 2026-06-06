@@ -3,12 +3,15 @@ import React from 'react';
 /**
  * Golden Horizon Research — Card
  * Surface container. Variants: default (bordered), elevated (shadow), inverse (matte black).
- * `interactive` adds hover lift. `accent` adds a thin top gold rule.
+ * `interactive` adds hover lift + pointer (clickable cards).
+ * `lift` adds the same hover elevation WITHOUT a pointer cursor (decorative cards).
+ * `accent` adds a thin top gold rule.
  */
 export function Card({
   children,
   variant = 'default',
   interactive = false,
+  lift = false,
   accent = false,
   padding = 'var(--space-6)',
   style = {},
@@ -22,7 +25,7 @@ export function Card({
   };
   const v = variants[variant] || variants.default;
   const [hover, setHover] = React.useState(false);
-  const lift = interactive && hover;
+  const elevated = (interactive || lift) && hover;
   return (
     <div
       onClick={onClick}
@@ -33,11 +36,13 @@ export function Card({
         borderRadius: 'var(--radius-lg)',
         padding,
         cursor: interactive ? 'pointer' : 'default',
-        transition: 'transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out)',
-        transform: lift ? 'translateY(-3px)' : 'none',
-        boxShadow: lift ? 'var(--shadow-lg)' : v.boxShadow,
+        transition:
+          'transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out)',
+        transform: elevated ? 'translateY(-4px)' : 'none',
+        boxShadow: elevated ? 'var(--shadow-lg)' : v.boxShadow,
         overflow: 'hidden',
         ...v,
+        ...(elevated ? { borderColor: 'var(--accent-border)' } : null),
         ...style,
       }}
       {...rest}

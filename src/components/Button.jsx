@@ -44,6 +44,8 @@ export function Button({
     dark: { background: 'var(--surface-inverse-soft)', borderColor: 'rgba(246,240,228,0.30)' },
   }[variant] : {};
 
+  const sheen = variant === 'primary' && !disabled;
+
   return (
     <button
       type={type}
@@ -53,7 +55,10 @@ export function Button({
       onMouseLeave={() => { setHover(false); setActive(false); }}
       onMouseDown={() => setActive(true)}
       onMouseUp={() => setActive(false)}
+      className={sheen ? 'gh-sheen-host' : undefined}
       style={{
+        position: 'relative',
+        overflow: 'hidden',
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -69,17 +74,19 @@ export function Button({
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.45 : 1,
         transform: active && !disabled ? 'scale(0.97)' : 'scale(1)',
-        transition: 'background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out)',
+        transition: 'background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-base) var(--ease-out)',
         whiteSpace: 'nowrap',
         ...v,
         ...hoverStyle,
+        ...(variant === 'primary' && hover && !disabled ? { boxShadow: 'var(--shadow-gold)' } : null),
         ...style,
       }}
       {...rest}
     >
-      {iconLeft && <span style={{ display: 'inline-flex', flexShrink: 0 }}>{iconLeft}</span>}
-      {children}
-      {iconRight && <span style={{ display: 'inline-flex', flexShrink: 0 }}>{iconRight}</span>}
+      {sheen && <span className="gh-sheen" aria-hidden="true" />}
+      {iconLeft && <span style={{ position: 'relative', display: 'inline-flex', flexShrink: 0 }}>{iconLeft}</span>}
+      <span style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>{children}</span>
+      {iconRight && <span style={{ position: 'relative', display: 'inline-flex', flexShrink: 0 }}>{iconRight}</span>}
     </button>
   );
 }

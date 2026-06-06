@@ -1,10 +1,10 @@
 import { Eyebrow } from '../components/index.js';
 
 /** Vertical section with a centered max-width container. */
-export function Section({ children, dark = false, pad = 'var(--space-11)', style = {} }) {
+export function Section({ children, dark = false, pad = 'var(--space-11)', className = '', style = {} }) {
   return (
-    <section style={{ background: dark ? 'var(--ink)' : 'transparent', paddingTop: pad, paddingBottom: pad, ...style }}>
-      <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: '0 var(--space-6)' }}>{children}</div>
+    <section className={className} style={{ background: dark ? 'var(--ink)' : 'transparent', paddingTop: pad, paddingBottom: pad, ...style }}>
+      <div className="gh-container-pad" style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: '0 var(--space-6)' }}>{children}</div>
     </section>
   );
 }

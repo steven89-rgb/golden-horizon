@@ -40,3 +40,39 @@ export const STEPS = [
   { n: '03', icon: 'ShieldChk', h: 'Verifiable', p: 'Batch and lot numbers are searchable anytime you need them.' },
   { n: '04', icon: 'Truck', h: 'Fulfilled', p: 'Secure packaging dispatched from California with tracking.' },
 ];
+
+/* ============================================================
+   TRUST STATISTICS  — HONEST BY CONSTRUCTION
+   ------------------------------------------------------------
+   IMPORTANT: Do not fabricate trust numbers. The values below
+   are DERIVED from the live catalog (PRODUCTS) at runtime, so
+   they are always true to what the site actually shows:
+     • documented batches  = number of catalog batches
+     • COAs on file        = one per batch
+     • average purity      = mean of published purity results
+     • portal availability = the verification page is always-on
+   ============================================================ */
+
+const _avgPurity = (() => {
+  const nums = PRODUCTS.map((p) => parseFloat(p.purity)).filter((n) => !Number.isNaN(n));
+  if (!nums.length) return null;
+  return nums.reduce((a, b) => a + b, 0) / nums.length;
+})();
+
+export const STATS = [
+  { icon: 'Layers', end: PRODUCTS.length, suffix: '', decimals: 0, label: 'Documented Batches', sub: 'Each with an independent COA' },
+  { icon: 'FileChk', end: PRODUCTS.length, suffix: '', decimals: 0, label: 'COAs On File', sub: 'Searchable in the portal' },
+  { icon: 'BadgeChk', end: _avgPurity ?? 0, suffix: '%', decimals: 1, label: 'Average Documented Purity', sub: 'Across the published catalog' },
+  { icon: 'ShieldChk', end: 24, suffix: '/7', decimals: 0, label: 'Verification Portal', sub: 'Always-on batch lookup' },
+];
+
+/* ------------------------------------------------------------
+   OPTIONAL BRAND FACTS — fill in ONLY with figures you can stand
+   behind. Leave as null to hide the tile (nothing is invented).
+   Example once true:  yearsOperating: 3,  ordersFulfilled: 4200
+   ------------------------------------------------------------ */
+export const BRAND_FACTS = {
+  yearsOperating: null,   // e.g. 3  -> renders a "Years Operating" tile
+  ordersFulfilled: null,  // e.g. 4200 -> renders an "Orders Fulfilled" tile
+  verificationLookups: null, // e.g. 9800 -> renders a "Verification Requests" tile
+};

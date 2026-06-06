@@ -1,7 +1,10 @@
 /* Golden Horizon Research — Design System entry point.
-   Keep this to @import lines only; everything it reaches ships to the app. */
+   Keep this to @import lines only; everything it reaches ships to the app.
+   Order matters: responsive.css is last so its breakpoint rules win. */
 @import url("./tokens/fonts.css");
 @import url("./tokens/colors.css");
 @import url("./tokens/typography.css");
 @import url("./tokens/layout.css");
 @import url("./base.css");
+@import url("./motion.css");
+@import url("./responsive.css");

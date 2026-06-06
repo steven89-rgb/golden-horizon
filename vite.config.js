@@ -1,11 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Golden Horizon Research website. base is relative so the build can be
-// served from any path (static host, subdirectory, or preview).
+// Golden Horizon Research website.
+// base MUST be absolute ('/') so that deep links and hard refreshes
+// (e.g. /shop, /verify, /product/rc12) load /assets/* correctly. With a
+// relative base ('./'), those routes resolve assets against the nested path
+// (e.g. /product/assets/...) and 404. Render's render.yaml rewrite already
+// serves index.html for every route, so '/' is the right choice here.
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/',
   // Output to build/ so static hosts that default to a "build" publish
   // directory (e.g. Render) pick it up without extra configuration.
   build: {
