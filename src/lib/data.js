@@ -63,7 +63,7 @@ export const STATS = [
   { icon: 'Layers', end: PRODUCTS.length, suffix: '', decimals: 0, label: 'Documented Batches', sub: 'Each with an independent COA' },
   { icon: 'FileChk', end: PRODUCTS.length, suffix: '', decimals: 0, label: 'COAs On File', sub: 'Searchable in the portal' },
   { icon: 'BadgeChk', end: _avgPurity ?? 0, suffix: '%', decimals: 1, label: 'Average Documented Purity', sub: 'Across the published catalog' },
-  { icon: 'ShieldChk', end: 24, suffix: '/7', decimals: 0, label: 'Verification Portal', sub: 'Always-on batch lookup' },
+  { icon: 'ShieldChk', display: '24/7', label: 'Verification Portal', sub: 'Always-on batch lookup' },
 ];
 
 /* ------------------------------------------------------------

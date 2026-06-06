@@ -192,7 +192,7 @@ function StatTile({ s, delay }) {
     <Reveal delay={delay} className="gh-stat-tile" style={{ padding: 'var(--space-6) var(--space-5)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
       <span style={{ display: 'inline-flex', color: 'var(--text-accent)', marginBottom: 14 }}>{Icon ? <Icon size={22} stroke={1.7} /> : null}</span>
       <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: 'clamp(2rem, 3.4vw, 2.75rem)', letterSpacing: 'var(--tracking-tight)', lineHeight: 1, color: 'var(--text-primary)' }}>
-        <CountUp end={s.end} decimals={s.decimals || 0} prefix={s.prefix || ''} suffix={s.suffix || ''} />
+        {s.display != null ? s.display : <CountUp end={s.end} decimals={s.decimals || 0} prefix={s.prefix || ''} suffix={s.suffix || ''} />}
       </div>
       <div style={{ marginTop: 12, fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-primary)' }}>{s.label}</div>
       <div style={{ marginTop: 4, fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>{s.sub}</div>
