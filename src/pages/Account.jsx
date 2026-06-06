@@ -47,7 +47,7 @@ export default function Account() {
         </div>
         <Button variant="ghost" onClick={() => setSigned(false)}>Sign out</Button>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
+      <div className="gh-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
         {SUMMARY.map(([h, ic, meta]) => {
           const Icon = Icons[ic];
           return (
@@ -66,7 +66,7 @@ export default function Account() {
       <Card variant="default" padding="0" style={{ overflow: 'hidden' }}>
         <div style={{ padding: '18px var(--space-6)', borderBottom: '1px solid var(--border-subtle)', fontSize: 'var(--text-md)', fontWeight: 700, color: 'var(--text-primary)' }}>Order History</div>
         {ORDERS.map((o) => (
-          <div key={o.id} style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr auto', gap: 16, alignItems: 'center', padding: '18px var(--space-6)', borderBottom: '1px solid var(--border-subtle)' }}>
+          <div key={o.id} className="gh-account-row" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr auto', gap: 16, alignItems: 'center', padding: '18px var(--space-6)', borderBottom: '1px solid var(--border-subtle)' }}>
             <div>
               <div style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-primary)' }}>{o.item}</div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)', marginTop: 3 }}>{o.id} · {o.batch}</div>

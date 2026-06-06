@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Section } from '../layout/Section.jsx';
 import { FaqItem } from '../layout/FaqItem.jsx';
-import { Button, Eyebrow } from '../components/index.js';
+import { Button, Eyebrow, Reveal } from '../components/index.js';
 import { ShieldChk, WhatsApp } from '../lib/icons.jsx';
 import { FAQ } from '../lib/data.js';
 
@@ -27,8 +27,8 @@ export default function Faq() {
           </p>
         </div>
       </div>
-      <Section pad="var(--space-9)">
-        <div style={{ maxWidth: 820, margin: '0 auto' }}>
+      <Section pad="var(--space-9)" className="gh-section-pad">
+        <Reveal style={{ maxWidth: 820, margin: '0 auto' }}>
           {items.map((f, i) => (
             <FaqItem key={i} item={f} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
           ))}
@@ -40,7 +40,7 @@ export default function Faq() {
               Contact Us
             </Button>
           </div>
-        </div>
+        </Reveal>
       </Section>
     </div>
   );

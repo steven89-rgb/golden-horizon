@@ -159,6 +159,20 @@ export const Cart = (p) => (
   </Ico>
 );
 
+export const Copy = (p) => (
+  <Ico {...p}>
+    <rect x="9" y="9" width="11" height="11" rx="2" />
+    <path d="M5 15V5a2 2 0 0 1 2-2h8" />
+  </Ico>
+);
+export const ZoomIn = (p) => (
+  <Ico {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="M21 21l-4.3-4.3" />
+    <path d="M11 8v6M8 11h6" />
+  </Ico>
+);
+
 // WhatsApp-style chat glyph (recreated, filled).
 export const WhatsApp = ({ size = 24, ...rest }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...rest}>
@@ -190,5 +204,7 @@ export const Icons = {
   Repeat,
   Clock,
   Cart,
+  Copy,
+  ZoomIn,
   WhatsApp,
 };
