@@ -4,7 +4,7 @@ import { Section, SectionHead } from '../layout/Section.jsx';
 import { ProductThumb } from '../layout/Product.jsx';
 import { Button, Card, Eyebrow, Badge, Reveal } from '../components/index.js';
 import { Icons, ArrowR, ShieldChk, Check } from '../lib/icons.jsx';
-import { useCatalog } from '../lib/catalog.js';
+import { useCatalog, addToCartUrl } from '../lib/catalog.js';
 import { useT } from '../lib/i18n.jsx';
 
 /* ------------------------------- Hero ------------------------------- */
@@ -84,7 +84,11 @@ function BestsellerCard({ p }) {
   const navigate = useNavigate();
   const { t } = useT();
   const [added, setAdded] = useState(false);
-  const add = (e) => { e.stopPropagation(); setAdded(true); setTimeout(() => setAdded(false), 1500); };
+  const add = (e) => {
+    e.stopPropagation();
+    if (p.wcId) { window.location.href = addToCartUrl(p.wcId); return; }
+    setAdded(true); setTimeout(() => setAdded(false), 1500);
+  };
   return (
     <Card variant="elevated" lift padding="var(--space-4)" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div onClick={() => navigate(`/product/${p.id}`)} style={{ cursor: 'pointer' }}>

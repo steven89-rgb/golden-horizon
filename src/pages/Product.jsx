@@ -5,7 +5,7 @@ import { FaqItem } from '../layout/FaqItem.jsx';
 import { Button, Badge } from '../components/index.js';
 import { Icons, ArrowR, Download, ZoomIn } from '../lib/icons.jsx';
 import { PRODUCTS } from '../lib/data.js';
-import { useCatalog } from '../lib/catalog.js';
+import { useCatalog, addToCartUrl } from '../lib/catalog.js';
 
 /* ----------------------------- Gallery ----------------------------- */
 
@@ -202,7 +202,7 @@ export default function Product() {
           </div>
           <div className="gh-buy-row" style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 26, marginBottom: 30, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 'var(--text-2xl)', fontWeight: 800, color: 'var(--text-primary)' }}>${p.price}</span>
-            <Button variant="primary" size="lg" iconRight={<ArrowR size={17} />}>Add to Order</Button>
+            <Button variant="primary" size="lg" iconRight={<ArrowR size={17} />} onClick={() => { if (p.wcId) window.location.href = addToCartUrl(p.wcId); }}>Add to Order</Button>
             <Button variant="secondary" size="lg" iconLeft={<Download size={17} stroke={1.9} />} onClick={() => navigate('/verify')}>COA</Button>
           </div>
 

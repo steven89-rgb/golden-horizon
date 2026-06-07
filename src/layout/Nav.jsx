@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo.jsx';
 import { LanguageSwitcher } from './LanguageSwitcher.jsx';
 import { useT } from '../lib/i18n.jsx';
+import { isLiveCatalog, cartUrl, accountUrl } from '../lib/catalog.js';
 import { User, Cart, Menu, X, ShieldChk, WhatsApp, ArrowR } from '../lib/icons.jsx';
 
 const NAV = [
@@ -209,10 +210,10 @@ export function Nav() {
         </nav>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <span className="gh-nav-links"><LanguageSwitcher /></span>
-          <IconButton label={t('nav.account')} onClick={() => navigate('/account')}>
+          <IconButton label={t('nav.account')} onClick={() => { if (isLiveCatalog) window.location.href = accountUrl(); else navigate('/account'); }}>
             <User size={19} stroke={1.9} />
           </IconButton>
-          <IconButton label={t('nav.cart')} onClick={() => navigate('/shop')} badge={0}>
+          <IconButton label={t('nav.cart')} onClick={() => { if (isLiveCatalog) window.location.href = cartUrl(); else navigate('/shop'); }} badge={0}>
             <Cart size={19} stroke={1.9} />
           </IconButton>
           <IconButton

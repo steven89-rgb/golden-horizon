@@ -1,17 +1,27 @@
 import { useEffect, useState } from 'react';
 import { PRODUCTS } from './data.js';
 
-// Headless WooCommerce catalog layer.
+// Headless WooCommerce layer.
 //
-// When VITE_WC_STORE_URL is set, products are fetched from the public, read-only
-// WooCommerce Store API (no secret key required, safe in the browser). When it is
-// unset OR the request fails, we fall back to the bundled sample catalog so the
-// site always renders. See docs/wordpress-woocommerce-setup.md.
+// Products come from WooCommerce's public, read-only Store API (no secret key,
+// safe in the browser). Cart / checkout / account hand off to WooCommerce's own
+// hosted pages — also keyless. The WooCommerce REST keys (ck_/cs_) are NEVER
+// used here; they must stay server-side. See docs/wordpress-woocommerce-setup.md.
+//
+// Configure the store via VITE_WC_STORE_URL; the default below points at the
+// current Hostinger store. Change it (env or here) when you move to a real domain.
 
-const STORE_URL = (import.meta.env.VITE_WC_STORE_URL || '').replace(/\/$/, '');
+const STORE_URL = (import.meta.env.VITE_WC_STORE_URL || 'https://lightgray-lark-783424.hostingersite.com').replace(/\/$/, '');
 const PER_PAGE = import.meta.env.VITE_WC_PER_PAGE || 24;
 
+export const storeUrl = STORE_URL;
 export const isLiveCatalog = Boolean(STORE_URL);
+
+/** WooCommerce hosted pages (the real, keyless commerce + portal surfaces). */
+export const cartUrl = () => `${STORE_URL}/cart/`;
+export const checkoutUrl = () => `${STORE_URL}/checkout/`;
+export const accountUrl = () => `${STORE_URL}/my-account/`;
+export const addToCartUrl = (wcId, qty = 1) => `${STORE_URL}/?add-to-cart=${wcId}&quantity=${qty}`;
 
 /** Pull a value out of a WooCommerce product's meta_data array by key. */
 function meta(product, key) {
@@ -26,11 +36,13 @@ function mapProduct(p) {
   const price = Math.round(priceMinor / 10 ** decimals);
   return {
     id: p.slug || String(p.id),
+    wcId: p.id, // numeric WooCommerce id, used for add-to-cart
+    permalink: p.permalink,
     name: p.name,
     code: meta(p, 'code') || p.sku || `GHR-${p.id}`,
     size: meta(p, 'size') || '',
-    form: meta(p, 'form') || 'Research material',
-    type: meta(p, 'type') || (p.categories?.[0]?.name ?? 'Research Materials'),
+    form: meta(p, 'form') || 'Pen',
+    type: meta(p, 'type') || (p.categories?.[0]?.name ?? 'Pens'),
     purity: meta(p, 'purity') || '—',
     batch: meta(p, 'batch') || '—',
     lot: meta(p, 'lot') || '—',
