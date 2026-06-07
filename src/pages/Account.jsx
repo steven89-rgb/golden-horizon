@@ -4,8 +4,8 @@ import { Button, Badge, Card, Eyebrow, Input } from '../components/index.js';
 import { Icons, Mail, Lock, Repeat } from '../lib/icons.jsx';
 
 const ORDERS = [
-  { id: 'GHR-10428', date: '2026-05-20', item: 'Reference Material RC-12', batch: 'GHR-2406-A', status: 'In transit', sub: true },
-  { id: 'GHR-10391', date: '2026-05-02', item: 'Calibration Standard CS-21', batch: 'GHR-2406-B', status: 'Delivered', sub: false },
+  { id: 'GHR-10428', date: '2026-05-20', item: 'Retatrutide 20 mg Pen', batch: 'GHR-2406-B', status: 'In transit', sub: true },
+  { id: 'GHR-10391', date: '2026-05-02', item: 'Retatrutide 15 mg Pen', batch: 'GHR-2406-A', status: 'Delivered', sub: false },
 ];
 
 const SUMMARY = [

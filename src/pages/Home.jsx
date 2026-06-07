@@ -108,9 +108,9 @@ function Bestsellers() {
   return (
     <Section className="gh-section-pad" style={{ background: 'var(--surface-sunken)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
       <SectionHead center eyebrow={t('best.eyebrow')} title={t('best.title')} />
-      <div className="gh-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 20 }}>
+      <div className="gh-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20, maxWidth: 620, margin: '0 auto' }}>
         {items.map((p, i) => (
-          <Reveal key={p.id} delay={(i % 4) * 80}>
+          <Reveal key={p.id} delay={(i % 2) * 80}>
             <BestsellerCard p={p} />
           </Reveal>
         ))}

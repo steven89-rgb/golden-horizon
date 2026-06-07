@@ -2,15 +2,11 @@
 // Verification-focused, non-medical. No fabricated reviews, stats, or testimonials.
 
 export const PRODUCTS = [
-  { id: 'rc12', name: 'Reference Material RC-12', code: 'GHR-RC12', size: '10 mg', form: 'Lyophilized', type: 'Reference Standards', purity: '99.2%', batch: 'GHR-2406-A', lot: 'L-4471-09', tested: '2026-05-18', status: 'verified', avail: 'In stock', price: 84 },
-  { id: 'rc08', name: 'Reference Material RC-08', code: 'GHR-RC08', size: '5 mg', form: 'Lyophilized', type: 'Reference Standards', purity: '98.9%', batch: 'GHR-2405-C', lot: 'L-4460-02', tested: '2026-05-04', status: 'verified', avail: 'In stock', price: 72 },
-  { id: 'cs21', name: 'Calibration Standard CS-21', code: 'GHR-CS21', size: '25 mg', form: 'Solution', type: 'Calibration Standards', purity: '99.6%', batch: 'GHR-2406-B', lot: 'L-4475-11', tested: '2026-05-22', status: 'verified', avail: 'In stock', price: 118 },
-  { id: 'cs14', name: 'Calibration Standard CS-14', code: 'GHR-CS14', size: '25 mg', form: 'Solution', type: 'Calibration Standards', purity: '99.1%', batch: 'GHR-2404-D', lot: 'L-4452-07', tested: '2026-04-19', status: 'verified', avail: 'Batch pending', price: 109 },
-  { id: 'as05', name: 'Assay Reagent AS-05', code: 'GHR-AS05', size: '50 mg', form: 'Powder', type: 'Assay Reagents', purity: '98.4%', batch: 'GHR-2405-A', lot: 'L-4458-03', tested: '2026-05-01', status: 'verified', avail: 'In stock', price: 64 },
-  { id: 'as02', name: 'Assay Reagent AS-02', code: 'GHR-AS02', size: '50 mg', form: 'Powder', type: 'Assay Reagents', purity: '97.8%', batch: 'GHR-2403-B', lot: 'L-4440-15', tested: '2026-03-28', status: 'pending', avail: 'Batch pending', price: 58 },
+  { id: 'reta15', name: 'Retatrutide 15 mg Pen', code: 'GHR-RTA15', size: '15 mg', form: 'Pen', type: 'Pens', purity: '99.2%', batch: 'GHR-2406-A', lot: 'L-4471-09', tested: '2026-05-18', status: 'verified', avail: 'In stock', price: 185 },
+  { id: 'reta20', name: 'Retatrutide 20 mg Pen', code: 'GHR-RTA20', size: '20 mg', form: 'Pen', type: 'Pens', purity: '99.4%', batch: 'GHR-2406-B', lot: 'L-4475-11', tested: '2026-05-22', status: 'verified', avail: 'In stock', price: 225 },
 ];
 
-export const FILTERS_TYPE = ['All Products', 'Reference Standards', 'Calibration Standards', 'Assay Reagents'];
+export const FILTERS_TYPE = ['All Products', 'Pens'];
 export const FILTERS_AVAIL = ['Any Availability', 'In stock', 'Batch pending'];
 
 export const FAQ = [

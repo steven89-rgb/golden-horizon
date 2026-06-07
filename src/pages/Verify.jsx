@@ -189,7 +189,7 @@ export default function Verify() {
           </div>
           <div className="gh-enter gh-enter-d5" style={{ display: 'flex', gap: 8, justifyContent: 'center', alignItems: 'center', marginTop: 16, flexWrap: 'wrap' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 'var(--text-xs)', color: 'var(--gray-500)' }}><Lock size={12} stroke={1.9} /> Try:</span>
-            {['GHR-2406-A', 'L-4475-11', 'GHR-2405-A'].map((b) => (
+            {['GHR-2406-A', 'GHR-2406-B', 'L-4471-09'].map((b) => (
               <button
                 key={b}
                 onClick={() => { setQ(b); run(b); }}
