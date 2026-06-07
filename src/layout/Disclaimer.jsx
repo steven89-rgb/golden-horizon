@@ -1,7 +1,9 @@
 import { ShieldChk } from '../lib/icons.jsx';
+import { useT } from '../lib/i18n.jsx';
 
 /** Site-wide legal disclaimer — research-use-only, no medical claims. */
 export function Disclaimer({ compact = false }) {
+  const { t } = useT();
   return (
     <div
       style={{
@@ -19,8 +21,8 @@ export function Disclaimer({ compact = false }) {
         <ShieldChk size={compact ? 14 : 16} stroke={1.8} />
       </span>
       <span>
-        <strong style={{ fontWeight: 600, color: compact ? 'var(--gray-400)' : 'var(--text-secondary)' }}>For laboratory research purposes only.</strong>{' '}
-        Not intended for human consumption. Not intended to diagnose, treat, cure, or prevent any disease.
+        <strong style={{ fontWeight: 600, color: compact ? 'var(--gray-400)' : 'var(--text-secondary)' }}>{t('footer.disclaimerStrong')}</strong>{' '}
+        {t('footer.disclaimer')}
       </span>
     </div>
   );

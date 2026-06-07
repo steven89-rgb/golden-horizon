@@ -158,6 +158,13 @@ export const Cart = (p) => (
     <path d="M2.5 3h2.2l2.1 11.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.3L21.5 7H6" />
   </Ico>
 );
+export const Globe = (p) => (
+  <Ico {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3 12h18" />
+    <path d="M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" />
+  </Ico>
+);
 
 export const Copy = (p) => (
   <Ico {...p}>
@@ -204,6 +211,7 @@ export const Icons = {
   Repeat,
   Clock,
   Cart,
+  Globe,
   Copy,
   ZoomIn,
   WhatsApp,

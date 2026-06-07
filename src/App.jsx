@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Nav } from './layout/Nav.jsx';
 import { Footer } from './layout/Footer.jsx';
 import { WhatsAppFab } from './layout/WhatsAppFab.jsx';
+import { AnnouncementBar } from './layout/AnnouncementBar.jsx';
 import Home from './pages/Home.jsx';
 import Shop from './pages/Shop.jsx';
 import Product from './pages/Product.jsx';
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <AnnouncementBar />
       <Nav />
       <main style={{ flex: 1 }}>
         <Routes>
