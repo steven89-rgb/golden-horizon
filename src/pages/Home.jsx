@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Section, SectionHead } from '../layout/Section.jsx';
 import { ProductThumb } from '../layout/Product.jsx';
-import { Button, Card, Eyebrow, Badge, Reveal } from '../components/index.js';
+import { FaqItem } from '../layout/FaqItem.jsx';
+import { Button, Card, Eyebrow, Reveal } from '../components/index.js';
 import { Icons, ArrowR, ShieldChk, Check } from '../lib/icons.jsx';
 import { useCatalog, addToCartUrl } from '../lib/catalog.js';
 import { useT } from '../lib/i18n.jsx';
@@ -51,6 +52,82 @@ function Hero() {
   );
 }
 
+/* ---------------------------- Trust Cards ---------------------------- */
+
+function TrustCards() {
+  const { get } = useT();
+  const items = get('trust.items') || [];
+  return (
+    <Section className="gh-section-pad">
+      <div className="gh-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 20 }}>
+        {items.map((f, i) => {
+          const Icon = Icons[f.icon] || Icons.ShieldChk;
+          return (
+            <Reveal key={f.h} delay={i * 70}>
+              <Card variant="elevated" lift className="gh-trust-tile" padding="var(--space-5)" style={{ height: '100%' }}>
+                <span className="gh-tile-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, borderRadius: 'var(--radius-full)', background: 'var(--accent-soft)', border: '1px solid var(--accent-border)', color: 'var(--gold-300)', marginBottom: 16 }}>
+                  <Icon size={21} stroke={1.8} />
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: 'var(--text-md)', fontWeight: 700, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{f.h}</h3>
+                <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--leading-normal)', color: 'var(--text-secondary)' }}>{f.p}</p>
+              </Card>
+            </Reveal>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------- Featured Products ------------------------- */
+
+function FeaturedCard({ p }) {
+  const navigate = useNavigate();
+  const { t } = useT();
+  const [added, setAdded] = useState(false);
+  const add = (e) => {
+    e.stopPropagation();
+    if (p.wcId) { window.location.href = addToCartUrl(p.wcId); return; }
+    setAdded(true); setTimeout(() => setAdded(false), 1500);
+  };
+  return (
+    <Card variant="elevated" lift padding="var(--space-4)" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <div onClick={() => navigate(`/product/${p.id}`)} style={{ cursor: 'pointer' }}>
+        <ProductThumb form={p.form} />
+      </div>
+      <h3 onClick={() => navigate(`/product/${p.id}`)} style={{ margin: '16px 0 0', fontSize: 'var(--text-md)', fontWeight: 700, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', cursor: 'pointer' }}>{p.name}</h3>
+      <div style={{ marginTop: 6, fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', fontWeight: 600, color: 'var(--text-accent)' }}>${p.price}.00</div>
+      <div style={{ marginTop: 'auto', paddingTop: 16 }}>
+        <Button variant={added ? 'secondary' : 'primary'} size="sm" fullWidth iconLeft={added ? <Check size={15} stroke={2.2} /> : undefined} onClick={add}>
+          {added ? t('common.added') : t('common.addToCart')}
+        </Button>
+      </div>
+    </Card>
+  );
+}
+
+function FeaturedProducts() {
+  const { products } = useCatalog();
+  const navigate = useNavigate();
+  const { t } = useT();
+  const items = products.slice(0, 4);
+  return (
+    <Section className="gh-section-pad" style={{ background: 'var(--surface-sunken)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
+      <SectionHead center eyebrow={t('best.eyebrow')} title={t('best.title')} desc={t('best.desc')} />
+      <div className="gh-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20, maxWidth: 620, margin: '0 auto' }}>
+        {items.map((p, i) => (
+          <Reveal key={p.id} delay={(i % 2) * 80}>
+            <FeaturedCard p={p} />
+          </Reveal>
+        ))}
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'var(--space-8)' }}>
+        <Button variant="secondary" iconRight={<ArrowR size={16} />} onClick={() => navigate('/shop')}>{t('common.viewProducts')}</Button>
+      </div>
+    </Section>
+  );
+}
+
 /* ------------------------------- About ------------------------------- */
 
 function AboutSection() {
@@ -78,54 +155,9 @@ function AboutSection() {
   );
 }
 
-/* ---------------------------- Bestsellers ---------------------------- */
+/* --------------------------- Why Golden Horizon --------------------------- */
 
-function BestsellerCard({ p }) {
-  const navigate = useNavigate();
-  const { t } = useT();
-  const [added, setAdded] = useState(false);
-  const add = (e) => {
-    e.stopPropagation();
-    if (p.wcId) { window.location.href = addToCartUrl(p.wcId); return; }
-    setAdded(true); setTimeout(() => setAdded(false), 1500);
-  };
-  return (
-    <Card variant="elevated" lift padding="var(--space-4)" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div onClick={() => navigate(`/product/${p.id}`)} style={{ cursor: 'pointer' }}>
-        <ProductThumb form={p.form} />
-      </div>
-      <h3 onClick={() => navigate(`/product/${p.id}`)} style={{ margin: '16px 0 0', fontSize: 'var(--text-md)', fontWeight: 700, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', cursor: 'pointer' }}>{p.name}</h3>
-      <div style={{ marginTop: 6, fontFamily: 'var(--font-mono)', fontSize: 'var(--text-lg)', fontWeight: 600, color: 'var(--text-accent)' }}>${p.price}.00</div>
-      <div style={{ marginTop: 'auto', paddingTop: 16 }}>
-        <Button variant={added ? 'secondary' : 'primary'} size="sm" fullWidth iconLeft={added ? <Check size={15} stroke={2.2} /> : undefined} onClick={add}>
-          {added ? t('common.added') : t('common.addToCart')}
-        </Button>
-      </div>
-    </Card>
-  );
-}
-
-function Bestsellers() {
-  const { products } = useCatalog();
-  const { t } = useT();
-  const items = products.slice(0, 4);
-  return (
-    <Section className="gh-section-pad" style={{ background: 'var(--surface-sunken)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
-      <SectionHead center eyebrow={t('best.eyebrow')} title={t('best.title')} />
-      <div className="gh-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20, maxWidth: 620, margin: '0 auto' }}>
-        {items.map((p, i) => (
-          <Reveal key={p.id} delay={(i % 2) * 80}>
-            <BestsellerCard p={p} />
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-/* ----------------------------- Features ----------------------------- */
-
-function Features() {
+function WhyGoldenHorizon() {
   const { t, get } = useT();
   const items = get('features.items') || [];
   return (
@@ -160,13 +192,38 @@ function Features() {
   );
 }
 
+/* -------------------------------- FAQ -------------------------------- */
+
+function HomeFaq() {
+  const navigate = useNavigate();
+  const { t, get } = useT();
+  const items = get('homeFaq.items') || [];
+  const [open, setOpen] = useState(0);
+  return (
+    <Section className="gh-section-pad" style={{ background: 'var(--surface-sunken)', borderTop: '1px solid var(--border-subtle)' }}>
+      <SectionHead center eyebrow={t('homeFaq.eyebrow')} title={t('homeFaq.title')} />
+      <div style={{ maxWidth: 760, margin: '0 auto' }}>
+        {items.map((item, i) => (
+          <FaqItem key={item.q} item={item} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
+        ))}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 'var(--space-8)', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>{t('homeFaq.more')}</span>
+          <Button variant="secondary" iconRight={<ArrowR size={16} />} onClick={() => navigate('/contact')}>{t('common.contactUs')}</Button>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export default function Home() {
   return (
     <div>
       <Hero />
+      <TrustCards />
+      <FeaturedProducts />
       <AboutSection />
-      <Bestsellers />
-      <Features />
+      <WhyGoldenHorizon />
+      <HomeFaq />
     </div>
   );
 }
