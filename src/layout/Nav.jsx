@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo.jsx';
+import { LanguageSwitcher } from './LanguageSwitcher.jsx';
+import { useT } from '../lib/i18n.jsx';
+import { isLiveCatalog, cartUrl, accountUrl } from '../lib/catalog.js';
 import { User, Cart, Menu, X, ShieldChk, WhatsApp, ArrowR } from '../lib/icons.jsx';
 
 const NAV = [
-  { to: '/', label: 'Home' },
-  { to: '/shop', label: 'Shop' },
-  { to: '/verify', label: 'Verify COAs' },
-  { to: '/about', label: 'About' },
-  { to: '/faq', label: 'FAQ' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/', key: 'home' },
+  { to: '/shop', key: 'products' },
+  { to: '/about', key: 'about' },
+  { to: '/faq', key: 'faq' },
+  { to: '/contact', key: 'contact' },
 ];
 
 function IconButton({ label, onClick, badge, children, className }) {
@@ -63,6 +65,7 @@ function IconButton({ label, onClick, badge, children, className }) {
 
 /** Full-screen mobile navigation drawer. */
 function MobileDrawer({ open, onClose, onNavigate, pathname }) {
+  const { t } = useT();
   // Lock body scroll while the drawer is open.
   useEffect(() => {
     if (open) {
@@ -121,7 +124,7 @@ function MobileDrawer({ open, onClose, onNavigate, pathname }) {
                 animationDelay: `${0.04 * i + 0.05}s`,
               }}
             >
-              {n.label}
+              {t('nav.' + n.key)}
               <ArrowR size={18} />
             </button>
           );
@@ -132,10 +135,13 @@ function MobileDrawer({ open, onClose, onNavigate, pathname }) {
           onClick={() => onNavigate('/contact')}
           style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 52, borderRadius: 'var(--radius-full)', border: '1px solid var(--border-strong)', background: 'var(--surface-card)', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 600, cursor: 'pointer' }}
         >
-          <span style={{ color: '#25D366', display: 'inline-flex' }}><WhatsApp size={20} /></span> Contact on WhatsApp
+          <span style={{ color: '#25D366', display: 'inline-flex' }}><WhatsApp size={20} /></span> {t('contact.whatsapp')}
         </button>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>
-          <ShieldChk size={14} stroke={1.9} /> Secure checkout · California fulfillment
+          <ShieldChk size={14} stroke={1.9} /> {t('footer.fulfillment')}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 4 }}>
+          <LanguageSwitcher />
         </div>
       </div>
     </div>
@@ -146,6 +152,7 @@ function MobileDrawer({ open, onClose, onNavigate, pathname }) {
 export function Nav() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { t } = useT();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Always close the drawer on route change.
@@ -192,7 +199,7 @@ export function Nav() {
                   whiteSpace: 'nowrap',
                 }}
               >
-                {n.label}
+                {t('nav.' + n.key)}
                 {active && (
                   <span style={{ position: 'absolute', left: 0, right: 0, bottom: -2, height: 2, background: 'var(--gradient-gold)', borderRadius: 'var(--radius-full)' }} />
                 )}
@@ -200,11 +207,12 @@ export function Nav() {
             );
           })}
         </nav>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <IconButton label="Account" onClick={() => navigate('/account')}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <span className="gh-nav-links"><LanguageSwitcher /></span>
+          <IconButton label={t('nav.account')} onClick={() => { if (isLiveCatalog) window.location.href = accountUrl(); else navigate('/account'); }}>
             <User size={19} stroke={1.9} />
           </IconButton>
-          <IconButton label="Cart" onClick={() => navigate('/shop')} badge={0}>
+          <IconButton label={t('nav.cart')} onClick={() => { if (isLiveCatalog) window.location.href = cartUrl(); else navigate('/shop'); }} badge={0}>
             <Cart size={19} stroke={1.9} />
           </IconButton>
           <IconButton

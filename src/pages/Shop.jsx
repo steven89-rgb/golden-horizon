@@ -2,12 +2,16 @@ import { useState } from 'react';
 import { Section, SectionHead } from '../layout/Section.jsx';
 import { ProductCard } from '../layout/Product.jsx';
 import { Select, Reveal } from '../components/index.js';
-import { PRODUCTS, FILTERS_TYPE, FILTERS_AVAIL } from '../lib/data.js';
+import { FILTERS_TYPE, FILTERS_AVAIL } from '../lib/data.js';
+import { useCatalog } from '../lib/catalog.js';
+import { useT } from '../lib/i18n.jsx';
 
 export default function Shop() {
+  const { t } = useT();
+  const { products, loading } = useCatalog();
   const [type, setType] = useState('All Products');
   const [avail, setAvail] = useState('Any Availability');
-  const items = PRODUCTS.filter(
+  const items = products.filter(
     (p) => (type === 'All Products' || p.type === type) && (avail === 'Any Availability' || p.avail === avail)
   );
   return (
@@ -17,18 +21,18 @@ export default function Shop() {
         <div className="gh-container-pad" style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: 'var(--space-9) var(--space-6) var(--space-7)', position: 'relative' }}>
           <Reveal>
             <SectionHead
-              eyebrow="Catalog"
-              title="Research Materials"
-              desc="Reference standards, calibration standards, and assay reagents — each batch supplied with an independent Certificate of Analysis."
+              eyebrow={t('shop.eyebrow')}
+              title={t('shop.title')}
+              desc={t('shop.desc')}
             />
           </Reveal>
         </div>
       </div>
       <Section pad="var(--space-8)" className="gh-section-pad">
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 16, marginBottom: 'var(--space-7)', flexWrap: 'wrap' }}>
-          <Select label="Product Type" options={FILTERS_TYPE} value={type} onChange={(e) => setType(e.target.value)} style={{ maxWidth: 240 }} />
-          <Select label="Availability" options={FILTERS_AVAIL} value={avail} onChange={(e) => setAvail(e.target.value)} style={{ maxWidth: 220 }} />
-          <span style={{ marginLeft: 'auto', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--text-tertiary)' }}>{items.length} products</span>
+          <Select label={t('shop.type')} options={FILTERS_TYPE} value={type} onChange={(e) => setType(e.target.value)} style={{ maxWidth: 240 }} />
+          <Select label={t('shop.avail')} options={FILTERS_AVAIL} value={avail} onChange={(e) => setAvail(e.target.value)} style={{ maxWidth: 220 }} />
+          <span style={{ marginLeft: 'auto', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--text-tertiary)' }}>{loading ? t('shop.loading') : t('shop.count', { n: items.length })}</span>
         </div>
         <div className="gh-product-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
           {items.map((p, i) => (

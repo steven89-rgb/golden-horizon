@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Card, Badge } from '../components/index.js';
 import { Layers, ArrowR } from '../lib/icons.jsx';
+import { useT } from '../lib/i18n.jsx';
 
 /** Neutral document/material placeholder thumbnail (no medical imagery). */
 export function ProductThumb({ form, big = false }) {
@@ -28,6 +29,7 @@ export function ProductThumb({ form, big = false }) {
 /** Catalog product card. */
 export function ProductCard({ p }) {
   const navigate = useNavigate();
+  const { t } = useT();
   const goProduct = () => navigate(`/product/${p.id}`);
   return (
     <Card variant="elevated" interactive onClick={goProduct} padding="var(--space-4)">
@@ -35,7 +37,7 @@ export function ProductCard({ p }) {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 16 }}>
         <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>{p.code}</span>
         <Badge tone={p.status === 'verified' ? 'verified' : 'pending'} size="sm" dot>
-          {p.status === 'verified' ? 'Verified' : 'Pending'}
+          {p.status === 'verified' ? t('common.verified') : t('common.pending')}
         </Badge>
       </div>
       <h3 style={{ margin: '8px 0 0', fontSize: 'var(--text-lg)', fontWeight: 700, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{p.name}</h3>
@@ -44,7 +46,7 @@ export function ProductCard({ p }) {
         <span style={{ color: 'var(--border-strong)' }}>·</span>
         <span style={{ whiteSpace: 'nowrap' }}>{p.form}</span>
         <span style={{ color: 'var(--border-strong)' }}>·</span>
-        <span style={{ whiteSpace: 'nowrap' }}>Purity {p.purity}</span>
+        <span style={{ whiteSpace: 'nowrap' }}>{t('common.purity')} {p.purity}</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 18, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--text-secondary)' }}>
@@ -54,7 +56,7 @@ export function ProductCard({ p }) {
           onClick={(e) => { e.stopPropagation(); goProduct(); }}
           style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-accent)' }}
         >
-          View COA <ArrowR size={15} />
+          {t('common.viewCoa')} <ArrowR size={15} />
         </button>
       </div>
     </Card>
