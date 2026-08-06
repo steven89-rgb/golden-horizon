@@ -9,7 +9,6 @@ import { User, Cart, Menu, X, ShieldChk, WhatsApp, ArrowR } from '../lib/icons.j
 const NAV = [
   { to: '/', key: 'home' },
   { to: '/shop', key: 'products' },
-  { to: '/verify', key: 'verify' },
   { to: '/about', key: 'about' },
   { to: '/faq', key: 'faq' },
   { to: '/contact', key: 'contact' },

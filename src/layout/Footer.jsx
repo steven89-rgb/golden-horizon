@@ -10,7 +10,7 @@ export function Footer() {
   const navigate = useNavigate();
   const { t } = useT();
   const cols = [
-    { h: t('footer.catalog'), items: [[t('footer.shopAll'), '/shop'], [t('footer.verify'), '/verify'], [t('footer.tracking'), '/verify']] },
+    { h: t('footer.catalog'), items: [[t('footer.shopAll'), '/shop'], [t('nav.faq'), '/faq'], [t('footer.shipping'), '/shop']] },
     { h: t('footer.company'), items: [[t('footer.about'), '/about'], [t('footer.contact'), '/contact'], [t('footer.account'), '/account']] },
     { h: t('footer.support'), items: [[t('footer.whatsapp'), '/contact'], [t('footer.email'), '/contact'], [t('footer.shipping'), '/shop']] },
   ];
